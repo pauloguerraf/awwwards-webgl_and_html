@@ -3,6 +3,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import fragment from './shaders/fragment.glsl'
 import vertex from './shaders/vertex.glsl'
 
+import ocean from '../img/ocean_matt_hardy.jpg'
+
 
 export default class Sketch{
     constructor(options) {
@@ -43,7 +45,8 @@ export default class Sketch{
 
         this.material = new THREE.ShaderMaterial({
             uniforms:{
-                time: {value:0}
+                time: {value:0},
+                oceanTexture: {value: new THREE.TextureLoader().load(ocean)},
             },
             side: THREE.DoubleSide,
             fragmentShader: fragment,
