@@ -90,7 +90,7 @@ void main(){
     
     //newposition.z+=.05*sin(dist*40.-time);
     
-    newposition+=.2*normal*noise;
+    //newposition+=.2*normal*noise;
     
     vNoise=noise;
     
