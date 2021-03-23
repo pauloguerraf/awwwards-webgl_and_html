@@ -78,13 +78,23 @@ varying float vNoise;
 varying vec2 vUv;
 
 void main(){
-    vec3 newposition = position;
+    vec3 newposition=position;
     float PI=3.1415925;
-    float noise = cnoise(vec3(position.x*4.,position.y*4.+time/5.,0.));
+    float noise=cnoise(3.*vec3(position.x,position.y,position.z+time/80.));
+    
     //newposition.z+=.1*sin((newposition.x+.25+time/10.)*2.*PI);
+    
     //newposition.z+=0.1*vNoise;
-
-    vNoise = noise;
-    vUv = uv;
+    
+    //float dist=distance(uv,vec2(.5));
+    
+    //newposition.z+=.05*sin(dist*40.-time);
+    
+    newposition+=.2*normal*noise;
+    
+    vNoise=noise;
+    
+    vUv=uv;
+    
     gl_Position=projectionMatrix*modelViewMatrix*vec4(newposition,1.);
 }
