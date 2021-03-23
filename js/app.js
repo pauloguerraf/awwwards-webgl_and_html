@@ -38,7 +38,7 @@ export default class Sketch{
         this.camera.updateProjectionMatrix()
     }
     addObjects() {
-        this.geometry = new THREE.PlaneBufferGeometry( 0.5, 0.5, 50, 50 )
+        this.geometry = new THREE.PlaneBufferGeometry( 2, 2, 150, 150 )
         this.material = new THREE.MeshNormalMaterial()
 
         this.material = new THREE.ShaderMaterial({
@@ -48,7 +48,7 @@ export default class Sketch{
             side: THREE.DoubleSide,
             fragmentShader: fragment,
             vertexShader: vertex,
-            wireframe: true,
+            wireframe: false,
         })
 
         this.mesh = new THREE.Mesh( this.geometry, this.material )
@@ -56,7 +56,7 @@ export default class Sketch{
     }
     render() {
         this.time += 0.05;
-        this.mesh.rotation.x = Math.PI/3
+        this.mesh.rotation.x = -Math.PI/3
 	    // this.mesh.rotation.y = this.time / 1000
 
         this.material.uniforms.time.value = this.time
